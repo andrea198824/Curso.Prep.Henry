@@ -36,12 +36,12 @@ function agregarStringInvertida() {
   // Ej: 'menem'.reverse() => menem
   // 'toni'.reverse() => 'inot'
   // Pista: Necesitarás usar "this" dentro de "reverse"
-  String.prototype.reverse = function () {
-    var prueba = '';
-    for (var i= this.length; i >= 0 ; i--){
-        prueba = prueba + this.charAt(i);
-    } 
-  return prueba;
+  String.prototype.reverse = function() {
+    var stringInvertida = '';
+    for(var i = this.length - 1; i>=0; i--) {
+      stringInvertida = stringInvertida + this.charAt(i);
+    }
+    return stringInvertida;
   };
 }
 
@@ -56,30 +56,40 @@ function agregarStringInvertida() {
     //   Domicilio: 'Saavedra 123'
     //  }
 
+
     class Persona {
-      this.nombre = nombre;
-      this.apellido = apellido;
-      this.edad; edad;
-      this.domicilio = domicilio;
-      
+      constructor(nombre, apellido, edad, domicilio) {
+        // Tu código:
+        this.nombre = nombre,
+        this.apellido = apellido,
+        this.edad = edad,
+        this.domicilio = domicilio
+        this.detalle = function() {
+          return { 
+            Nombre: this.nombre,
+            Apellido: this.apellido,
+            Edad: this.edad,
+            Domicilio: this.domicilio
+          }
+        }
+      }
     }
 
-  class Persona {
-    constructor(/*Escribir los argumentos que recibe el constructor*/) {
-      // Crea el constructor:
-
-    }
-}
 
 function crearInstanciaPersona(nombre, apellido, edad, dir) {
   //Con esta función vamos a crear una nueva persona a partir de nuestro constructor de persona (creado en el ejercicio anterior)
   //Recibirá los valores "Juan", "Perez", 22, "Saavedra 123" para sus respectivas propiedades
   //Devolver la nueva persona creada
+  const persona = new Persona(nombre, apellido, edad, dir);
+  return persona;
 }
   
 function agregarMetodo() {
   //La función agrega un método "datos" a la clase Persona que toma el nombre y la edad de la persona y devuelve: 
   //Ej: "Juan, 22 años"
+  Persona.prototype.datos = function() {
+    return this.nombre + ", " + this.edad + " años";
+  }
 }
   
 
